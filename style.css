@@ -1,4 +1,5 @@
-* {
+/* ================= GLOBAL RESET ================= */
+/* Removes default spacing and ensures consistent sizing */* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,15 +7,17 @@
     scroll-behavior: smooth;
 }
 
-/* NAVBAR */
+/* ================= HEADER / NAVBAR ================= */
+/* Fixed header visible on all pages */
 header {
     position: fixed;
     top: 0;
     width: 100%;
     background: black;
-    z-index: 1000;
+    z-index: 1;
 }
 
+/* Navbar layout */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -22,15 +25,17 @@ header {
     padding: 15px 40px;
 }
 
+/* Logo styling */
 .logo {
     color: orange;
-    font-size: 26px;
+    font-size: xx-large;
     font-weight: bold;
 }
 
+/* Navigation links */
 .nav-links a {
     color: white;
-    margin-left: 16px;
+    margin: 10px;
     text-decoration: none;
 }
 
@@ -38,19 +43,21 @@ header {
     color: orange;
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
+/* Common spacing for all sections */
 section {
     padding: 80px 60px;
     min-height: 100vh;
 }
 
+/* Section heading style */
 h2 {
     text-align: center;
     font-size: 32px;
     margin-bottom: 30px;
 }
 
-/* HOME */
+/* ================= HOME SECTION ================= */
 #home {
     background: linear-gradient(to right, orange, orangered);
     color: white;
@@ -74,75 +81,66 @@ h2 {
 }
 
 .download-btn {
-    padding: 14px 40px;
+    display: inline-block;
+    width: 250px; 
+    padding: 15px 0px;
     border-radius: 50px;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
-    transition: 0.3s;
+    transition-duration: 0.3s;
     border: 2px solid white;
     color: white;
-    width: 260px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.50);
 }
 
-/* Windows Button */
-.download-btn.windows {
-    background: rgba(0, 0, 0, 0.35);
-}
-
-.download-btn.windows:hover {
-    background: black;
-}
-
-/* iOS Button */
-.download-btn.ios {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.download-btn.ios:hover {
+.download-btn:hover {
     background: white;
     color: orangered;
 }
 
-/* GRID */
+/* ================= GRID LAYOUT ================= */
+/* Used for products, services, testimonials, etc. */
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
 }
 
-/* CARD */
+/* ================= CARD DESIGN ================= */
+/* Base card styling */
 .card {
     position: relative;
-    background: white;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgb(200, 200, 200);
-    transition: 0.3s;
+    transition-duration: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
 }
 
-/* ABOUT */
+/* ================= ABOUT US ================= */
+/* About styling */
 .about-card h3 {
     color: orange;
     margin-bottom: 10px;
 }
 
 .about-card p {
-    color: #555;
+    color: darkslategrey;
     font-size: 15px;
 }
 
-/* PRODUCT DROPDOWN */
+/* ================= PRODUCT DROPDOWN ================= */
+/* Hidden dropdown content */
 .dropdown {
     max-height: 0;
     overflow: hidden;
-    transition: 0.3s;
-    background: #f5f5f5;
+    transition-duration: 0.3s;
+    background: silver;
     margin-top: 10px;
     border-radius: 6px;
     font-size: 14px;
@@ -153,29 +151,54 @@ h2 {
     padding: 10px;
 }
 
-/* TESTIMONIAL */
+/* ================= TESTIMONIAL FLIP CARD ================= */
+/* Enables 3D flip effect */
 .testimonial-card {
-    height: 150px;
-    overflow: hidden;
+    perspective: 1000px;
+    height: 170px;
 }
 
-.review {
+.testimonial-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.testimonial-card:hover .testimonial-inner {
+    transform: rotateY(180deg);
+}
+
+.testimonial-front,
+.testimonial-back {
     position: absolute;
     inset: 0;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* FRONT */
+.testimonial-front {
+    background: white;
+}
+
+/* BACK */
+.testimonial-back {
     background: orange;
     color: white;
-    padding: 20px;
-    transform: translateY(100%);
-    transition: 0.4s;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.testimonial-card:hover .review {
-    transform: translateY(0);
-}
-
-/* FORM */
+/* ================= CONTACT FORM ================= */
+/* Form styling */
 #contact {
-    background: #f4f4f4;
+    background: rgb(236, 234, 234);
 }
 
 .contact-desc {
@@ -183,7 +206,7 @@ h2 {
     margin: 0 auto 30px;
     text-align: center;
     font-size: 16px;
-    color: rgb(90, 90, 90);
+    color: darkslategrey;
 }
 
 .contact-form {
@@ -192,7 +215,7 @@ h2 {
     background-color: white;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 25px black;
 }
 
 .form-group {
@@ -206,9 +229,9 @@ h2 {
 .contact-form select,
 .contact-form textarea {
     width: 100%;
-    padding: 14px;
-    border-radius: 6px;
-    border: 1px solid rgb(200, 200, 200);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid slategrey;
     font-size: 15px;
 }
 
@@ -216,7 +239,7 @@ h2 {
 .contact-form textarea:focus,
 .contact-form select:focus {
     outline: none;
-    border-color: rgb(255, 152, 0);
+    border-color: goldenrod;
 }
 
 .form-section {
@@ -265,7 +288,7 @@ h2 {
     margin-top: 30px;
     width: 100%;
     padding: 14px;
-    background-color: rgb(255, 152, 0);
+    background-color: darkorange;
     color: white;
     font-size: 17px;
     border: none;
@@ -274,13 +297,15 @@ h2 {
 }
 
 .contact-form button:hover {
-    background-color: rgb(230, 137, 0);
+    background-color: chocolate;
+    color: black;
 }
 
-/* HELP */
+/* ================= HELP & SUPPORT ================= */
+/* Help styling */
 .help-card {
     position: relative;
-    height: 180px;
+    height: 150px;
     overflow: hidden;
 }
 
@@ -291,14 +316,15 @@ h2 {
     color: white;
     padding: 20px;
     transform: translateY(100%);
-    transition: 0.4s;
+    transition-duration: 0.4s;
 }
 
 .help-card:hover .help-detail {
     transform: translateY(0);
 }
 
-/* FAQ */
+/* ================= FREQUENTLY ASKED QUESTIONS ================= */
+/* FAQ styling */
 .faq-card {
     position: relative;
     height: 120px;
@@ -312,16 +338,17 @@ h2 {
     color: white;
     padding: 20px;
     transform: translateY(100%);
-    transition: 0.4s;
+    transition-duration: 0.4s;
 }
 
 .faq-card:hover .faq-answer {
     transform: translateY(0);
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
+/* Footer styling */
 footer {
-    background: #1e1e1e;
+    background: black;
     color: white;
     text-align: center;
     padding: 30px;
